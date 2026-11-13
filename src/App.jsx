@@ -8,18 +8,16 @@ import {
   COHORT_STUDENTS 
 } from './data/mockData';
 
-import Navbar from './components/Navbar';
-import StudentPortal from './components/StudentPortal';
-import InterviewerHub from './components/InterviewerHub';
-import AdminHub from './components/AdminHub';
-import StudentMessagesTab from './components/StudentMessagesTab';
-import ArchitectureDocTab from './components/ArchitectureDocTab';
-import BeforeAfterShowcase from './components/BeforeAfterShowcase';
+import RoleHeader from './components/RoleHeader';
+import CandidatePortal from './components/candidate/CandidatePortal';
+import InterviewerPortal from './components/interviewer/InterviewerPortal';
+import AdminPortal from './components/admin/AdminPortal';
+import SpecsAndMessagesHub from './components/specs/SpecsAndMessagesHub';
 
-import { CheckCircle2, AlertTriangle, Bell, Info } from 'lucide-react';
+import { CheckCircle2, AlertTriangle, Bell } from 'lucide-react';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('student');
+  const [currentRole, setCurrentRole] = useState('candidate'); // 'candidate', 'interviewer', 'admin', 'specs'
   const [studentState, setStudentState] = useState(INITIAL_STUDENT_STATE);
   const [tracks, setTracks] = useState(INITIAL_TRACKS);
   const [interviewers, setInterviewers] = useState(INITIAL_INTERVIEWERS);
@@ -36,10 +34,8 @@ export default function App() {
 
   // Student books a slot
   const handleBookSlot = ({ slotId, date, time, interviewerId, interviewerName, meetingUrl }) => {
-    // Update slot status
     setSlots(prev => prev.map(s => s.id === slotId ? { ...s, status: 'BOOKED', studentName: studentState.name } : s));
 
-    // Update student state
     setStudentState(prev => ({
       ...prev,
       journeyState: 'BOOKED',
@@ -55,7 +51,6 @@ export default function App() {
       }
     }));
 
-    // Update cohort roster
     setCohortStudents(prev => prev.map(s => 
       s.rollNo === studentState.rollNo 
         ? { ...s, status: 'BOOKED', interviewer: interviewerName, scheduledFor: `${date}, ${time.split(' - ')[0]}` } 
@@ -87,7 +82,7 @@ export default function App() {
     showToast('Interview slot released. Your 14-day booking window is still active.', 'info');
   };
 
-  // Interviewer adds a slot
+  // Interviewer adds a custom slot
   const handleAddSlot = ({ interviewerId, date, time, timeOnly }) => {
     const newSlot = {
       id: `slot-custom-${Date.now()}`,
@@ -145,7 +140,7 @@ export default function App() {
     } else if (outcome === 'RETAKE_COOLDOWN') {
       showToast('Result Recorded: Retake Required. 14-day study cooldown initiated.', 'warning');
     } else {
-      showToast('Result Recorded: FAIL. Student notified.', 'error');
+      showToast('Result Recorded: FAIL. Candidate notified.', 'error');
     }
   };
 
@@ -178,7 +173,7 @@ export default function App() {
     showToast(`⚠️ Badge Nullified and -500 Miles deducted for ${rollNo}. Official notice sent.`, 'error');
   };
 
-  // Reset simulation
+  // Reset simulation state
   const handleResetSimulation = () => {
     setStudentState(INITIAL_STUDENT_STATE);
     setSlots(INITIAL_SLOTS);
@@ -188,7 +183,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
-      {/* Toast Notification Alert */}
+      {/* Toast Alert */}
       {toastMessage && (
         <div className="fixed bottom-6 right-6 z-50 animate-in slide-in-from-bottom duration-300">
           <div className={`flex items-center gap-3 px-4 py-3 rounded-xl shadow-2xl border text-xs font-semibold max-w-md ${
@@ -209,42 +204,19 @@ export default function App() {
         </div>
       )}
 
-      {/* Navigation Header */}
-      <Navbar
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
+      {/* Segregated Persona Navigation Header */}
+      <RoleHeader
+        currentRole={currentRole}
+        setCurrentRole={setCurrentRole}
         studentState={studentState}
         setStudentState={setStudentState}
         onResetSimulation={handleResetSimulation}
       />
 
-      {/* Main Container */}
+      {/* Main Workspace Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Quick Nav Shortcut Pill Bar */}
-        <div className="mb-6 flex flex-wrap items-center justify-between gap-3 text-xs bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
-          <div className="flex items-center gap-2 text-slate-400">
-            <Info className="w-3.5 h-3.5 text-indigo-400" />
-            <span>Active View:</span>
-            <span className="font-bold text-white capitalize">{activeTab}</span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => setActiveTab('showcase')}
-              className={`px-3 py-1 rounded-lg font-semibold transition flex items-center gap-1.5 ${
-                activeTab === 'showcase' 
-                  ? 'bg-indigo-600 text-white shadow-sm' 
-                  : 'bg-slate-800 text-slate-300 hover:text-white'
-              }`}
-            >
-              <span>🔄 View Side-by-Side Before & After</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Dynamic Views */}
-        {activeTab === 'student' && (
-          <StudentPortal
+        {currentRole === 'candidate' && (
+          <CandidatePortal
             studentState={studentState}
             setStudentState={setStudentState}
             tracks={tracks}
@@ -255,8 +227,8 @@ export default function App() {
           />
         )}
 
-        {activeTab === 'interviewer' && (
-          <InterviewerHub
+        {currentRole === 'interviewer' && (
+          <InterviewerPortal
             interviewers={interviewers}
             slots={slots}
             onAddSlot={handleAddSlot}
@@ -265,8 +237,8 @@ export default function App() {
           />
         )}
 
-        {activeTab === 'admin' && (
-          <AdminHub
+        {currentRole === 'admin' && (
+          <AdminPortal
             cohortStudents={cohortStudents}
             onSendNudge={handleSendNudge}
             onNullifyBadge={handleNullifyBadge}
@@ -274,35 +246,22 @@ export default function App() {
           />
         )}
 
-        {activeTab === 'messages' && (
-          <StudentMessagesTab />
-        )}
-
-        {activeTab === 'specs' && (
-          <ArchitectureDocTab />
-        )}
-
-        {activeTab === 'showcase' && (
-          <BeforeAfterShowcase 
-            studentState={studentState}
-            setStudentState={setStudentState}
-          />
+        {currentRole === 'specs' && (
+          <SpecsAndMessagesHub />
         )}
       </main>
 
-      {/* Footer */}
-      <footer className="bg-slate-900/80 border-t border-slate-800 py-6 text-xs text-slate-400">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      {/* Minimal Footer */}
+      <footer className="bg-slate-900/60 border-t border-slate-800/80 py-4 text-xs text-slate-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <span className="font-extrabold text-white">GRIT</span>
+            <span className="font-bold text-slate-400">NIAT GRIT</span>
             <span>•</span>
-            <span>NIAT Skilling Competition</span>
-            <span>•</span>
-            <span className="font-mono text-indigo-400">Track Badge Interview Engine</span>
+            <span>Track Badge Interview Scheduling Engine</span>
           </div>
 
-          <div className="flex items-center gap-4 text-slate-500">
-            <span>Concurrency-Safe Distributed Booking</span>
+          <div className="flex items-center gap-3 text-[11px]">
+            <span>Optimistic Concurrency Safe</span>
             <span>•</span>
             <span>Academic Integrity Protected</span>
           </div>

@@ -305,3 +305,4 @@ export default function BeforeAfterShowcase({ studentState, setStudentState }) {
     </div>
   );
 }
+

@@ -413,3 +413,4 @@ CREATE TABLE malpractice_audit_logs (
     </div>
   );
 }
+

@@ -151,3 +151,4 @@ npm run preview
 
 ## 🎥 Loom Recording Walkthrough
 For the video submission, a step-by-step presentation script is included in [docs/LOOM_RECORDING_SCRIPT.md](docs/LOOM_RECORDING_SCRIPT.md), featuring talking points, screen directions, and timing marks.
+

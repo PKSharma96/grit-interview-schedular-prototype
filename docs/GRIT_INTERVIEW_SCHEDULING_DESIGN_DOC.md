@@ -241,3 +241,4 @@ CREATE TABLE malpractice_audit_logs (
 1. **Concurrency Safety**: Using Redis distributed locks or PostgreSQL row-level locks on `interviewer_slots` with a 5-minute reservation TTL guarantees zero double-bookings even during flash booking spikes.
 2. **Malpractice Resilience**: The state model handles both live interview red flags and retrospective post-award contest malpractice, preserving historical auditability with immutable logs.
 3. **Operational Visibility**: The Interview Ops engine continuously segments students into `ELIGIBLE_BOOKED` vs `ELIGIBLE_UNBOOKED`, automating targeted multichannel nudges (Email, WhatsApp, Push) to maximize badge completion velocity.
+
