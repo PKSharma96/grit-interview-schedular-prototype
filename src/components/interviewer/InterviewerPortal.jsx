@@ -117,31 +117,33 @@ export default function InterviewerPortal({
         </div>
       </div>
 
-      {/* Sub-Navigation */}
-      <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-        <div className="flex items-center gap-2">
+      {/* Consistent Sub-Navigation */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+        <nav className="flex items-center bg-slate-900 border border-slate-800 p-1.5 rounded-xl gap-1">
           <button
             onClick={() => setInterviewerSubTab('schedule')}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition ${
+            className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-lg text-xs font-semibold transition cursor-pointer ${
               interviewerSubTab === 'schedule'
-                ? 'bg-indigo-600 text-white shadow-sm'
-                : 'text-slate-400 hover:text-white hover:bg-slate-900'
+                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30 border border-indigo-400/40'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-transparent'
             }`}
           >
-            Today's Schedule & Candidate Queue
+            <Calendar className="w-3.5 h-3.5" />
+            <span>Today's Schedule & Candidate Queue</span>
           </button>
 
           <button
             onClick={() => setInterviewerSubTab('availability')}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition ${
+            className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-lg text-xs font-semibold transition cursor-pointer ${
               interviewerSubTab === 'availability'
-                ? 'bg-indigo-600 text-white shadow-sm'
-                : 'text-slate-400 hover:text-white hover:bg-slate-900'
+                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30 border border-indigo-400/40'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-transparent'
             }`}
           >
-            Manage Working Hours & Slots
+            <Sliders className="w-3.5 h-3.5" />
+            <span>Manage Working Hours & Slots</span>
           </button>
-        </div>
+        </nav>
 
         <span className="text-xs text-slate-400 font-mono hidden sm:inline">
           Thursday, Oct 24, 2026 (IST)
@@ -164,7 +166,7 @@ export default function InterviewerPortal({
 
             <div className="space-y-3">
               {todaySlots.map(slot => {
-                const isAarav = slot.id === 'slot-3';
+                const isPushpendra = slot.id === 'slot-3';
                 const isBooked = slot.status === 'BOOKED';
 
                 return (
@@ -187,10 +189,10 @@ export default function InterviewerPortal({
                             <div className="space-y-0.5">
                               <div className="flex items-center gap-2">
                                 <span className="font-bold text-white text-sm">
-                                  {isAarav ? studentState.name : slot.studentName || 'Candidate'}
+                                  {isPushpendra ? studentState.name : slot.studentName || 'Candidate'}
                                 </span>
                                 <span className="text-[10px] font-mono text-indigo-300 bg-indigo-500/15 px-1.5 py-0.2 rounded border border-indigo-500/30">
-                                  {isAarav ? studentState.rollNo : 'NIAT-24-CS-0284'}
+                                  {isPushpendra ? studentState.rollNo : 'NIAT-24-CS-0284'}
                                 </span>
                               </div>
                               <p className="text-xs text-slate-400">

@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 import { 
   Award, 
-  User, 
   Calendar, 
   Settings, 
   FileText, 
-  SlidersHorizontal, 
-  Check, 
   ChevronDown,
   Sparkles,
   CheckCircle2,
   Clock,
   AlertTriangle,
-  RotateCcw
+  RotateCcw,
+  Check
 } from 'lucide-react';
 
 export default function RoleHeader({ 
@@ -25,10 +23,10 @@ export default function RoleHeader({
   const [isStateDropdownOpen, setIsStateDropdownOpen] = useState(false);
 
   const roles = [
-    { id: 'candidate', label: 'Candidate Portal', icon: Award, user: 'Aarav Sharma (Student)' },
-    { id: 'interviewer', label: 'Interviewer Hub', icon: Calendar, user: 'Sarah Chen (Interviewer)' },
-    { id: 'admin', label: 'Operations & Admin', icon: Settings, user: 'NIAT Ops Team' },
-    { id: 'specs', label: 'Specs & Messages', icon: FileText, user: 'Architecture Doc' },
+    { id: 'candidate', label: 'Candidate Portal', icon: Award, user: 'Pushpendra Kumar (Candidate)' },
+    { id: 'interviewer', label: 'Interviewer Hub', icon: Calendar, user: 'Sarah Chen (Senior Architect)' },
+    { id: 'admin', label: 'Operations & Admin', icon: Settings, user: 'Mahima Sharma (HR & Ops Lead)' },
+    { id: 'specs', label: 'Specs & Messages', icon: FileText, user: 'Technical Documentation' },
   ];
 
   const journeyStates = [
@@ -48,7 +46,7 @@ export default function RoleHeader({
           
           {/* Logo & Platform Name */}
           <div className="flex items-center gap-3 shrink-0 cursor-pointer" onClick={() => setCurrentRole('candidate')}>
-            <div className="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center shadow-md shadow-indigo-600/30 text-white font-bold">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center shadow-md shadow-indigo-600/30 text-white font-bold">
               <Award className="w-5 h-5" />
             </div>
             <div>
@@ -62,8 +60,8 @@ export default function RoleHeader({
             </div>
           </div>
 
-          {/* Role Segregation Segmented Control (Center) */}
-          <nav className="flex items-center bg-slate-950 p-1 rounded-xl border border-slate-800 shadow-inner">
+          {/* Consistent Segmented Control for Persona Switcher */}
+          <nav className="flex items-center bg-slate-950 p-1.5 rounded-xl border border-slate-800 shadow-inner gap-1">
             {roles.map(r => {
               const Icon = r.icon;
               const isActive = currentRole === r.id;
@@ -71,10 +69,10 @@ export default function RoleHeader({
                 <button
                   key={r.id}
                   onClick={() => setCurrentRole(r.id)}
-                  className={`flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                  className={`flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                     isActive
-                      ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/25'
-                      : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900'
+                      ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30 border border-indigo-400/40'
+                      : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900 border border-transparent'
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
@@ -92,7 +90,7 @@ export default function RoleHeader({
               <div className="relative">
                 <button
                   onClick={() => setIsStateDropdownOpen(!isStateDropdownOpen)}
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 hover:border-slate-700 text-xs font-medium text-slate-300 transition"
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 hover:border-slate-700 text-xs font-medium text-slate-300 transition cursor-pointer"
                   title="Simulate candidate lifecycle state"
                 >
                   <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
@@ -108,7 +106,7 @@ export default function RoleHeader({
                       <span>Simulate Candidate State</span>
                       <button 
                         onClick={() => { onResetSimulation(); setIsStateDropdownOpen(false); }}
-                        className="text-[10px] text-slate-400 hover:text-rose-400 flex items-center gap-0.5"
+                        className="text-[10px] text-slate-400 hover:text-rose-400 flex items-center gap-0.5 cursor-pointer"
                       >
                         <RotateCcw className="w-2.5 h-2.5" /> Reset
                       </button>
@@ -124,7 +122,7 @@ export default function RoleHeader({
                             setStudentState(prev => ({ ...prev, journeyState: st.key }));
                             setIsStateDropdownOpen(false);
                           }}
-                          className={`w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-xs text-left transition ${
+                          className={`w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-xs text-left transition cursor-pointer ${
                             isSelected 
                               ? 'bg-indigo-600/20 text-indigo-300 font-semibold border border-indigo-500/40' 
                               : 'text-slate-300 hover:bg-slate-800'
@@ -143,24 +141,24 @@ export default function RoleHeader({
               </div>
             )}
 
-            {/* User Profile Pill */}
-            <div className="flex items-center gap-2 pl-3 border-l border-slate-800 text-xs text-slate-300">
+            {/* User Profile Pill with realistic designations */}
+            <div className="flex items-center gap-2.5 pl-3 border-l border-slate-800 text-xs text-slate-300">
               <div className="text-right hidden sm:block">
                 <span className="font-semibold text-white block leading-tight">
-                  {currentRole === 'candidate' ? studentState.name : 
+                  {currentRole === 'candidate' ? 'Pushpendra Kumar' : 
                    currentRole === 'interviewer' ? 'Sarah Chen' : 
-                   currentRole === 'admin' ? 'Operations Lead' : 'Documentation'}
+                   currentRole === 'admin' ? 'Mahima Sharma' : 'System Architecture'}
                 </span>
-                <span className="text-[10px] text-slate-500 font-mono">
-                  {currentRole === 'candidate' ? studentState.rollNo : 
-                   currentRole === 'interviewer' ? 'Senior Architect' : 
-                   currentRole === 'admin' ? 'Academic Ops' : 'Technical Spec'}
+                <span className="text-[10px] text-slate-400 font-mono">
+                  {currentRole === 'candidate' ? 'Candidate • Engineering Student' : 
+                   currentRole === 'interviewer' ? 'Senior Technical Architect' : 
+                   currentRole === 'admin' ? 'HR & Interview Operations Lead' : 'Technical Specifications'}
                 </span>
               </div>
-              <div className="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center font-bold text-xs text-indigo-300">
-                {currentRole === 'candidate' ? 'AS' : 
+              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-600/30 to-purple-600/30 border border-indigo-500/40 flex items-center justify-center font-bold text-xs text-indigo-300">
+                {currentRole === 'candidate' ? 'PK' : 
                  currentRole === 'interviewer' ? 'SC' : 
-                 currentRole === 'admin' ? 'OP' : 'DOC'}
+                 currentRole === 'admin' ? 'MS' : 'DOC'}
               </div>
             </div>
 
@@ -171,4 +169,3 @@ export default function RoleHeader({
     </header>
   );
 }
-

@@ -87,7 +87,7 @@ export const INITIAL_INTERVIEWERS = [
 export const INITIAL_SLOTS = [
   { id: 'slot-1', interviewerId: 'int-1', date: '2026-10-24', time: '10:00 AM - 10:30 AM', timeOnly: '10:00 AM', status: 'AVAILABLE' },
   { id: 'slot-2', interviewerId: 'int-1', date: '2026-10-24', time: '02:00 PM - 02:30 PM', timeOnly: '02:00 PM', status: 'AVAILABLE' },
-  { id: 'slot-3', interviewerId: 'int-1', date: '2026-10-24', time: '04:00 PM - 04:30 PM', timeOnly: '04:00 PM', status: 'BOOKED', studentName: 'Aarav Sharma' },
+  { id: 'slot-3', interviewerId: 'int-1', date: '2026-10-24', time: '04:00 PM - 04:30 PM', timeOnly: '04:00 PM', status: 'BOOKED', studentName: 'Pushpendra Kumar' },
   { id: 'slot-4', interviewerId: 'int-1', date: '2026-10-25', time: '11:00 AM - 11:30 AM', timeOnly: '11:00 AM', status: 'AVAILABLE' },
   { id: 'slot-5', interviewerId: 'int-1', date: '2026-10-25', time: '03:30 PM - 04:00 PM', timeOnly: '03:30 PM', status: 'AVAILABLE' },
   { id: 'slot-6', interviewerId: 'int-2', date: '2026-10-24', time: '11:30 AM - 12:00 PM', timeOnly: '11:30 AM', status: 'AVAILABLE' },
@@ -99,10 +99,10 @@ export const INITIAL_SLOTS = [
 
 export const INITIAL_STUDENT_STATE = {
   id: 'stu-101',
-  name: 'Aarav Sharma',
+  name: 'Pushpendra Kumar',
   rollNo: 'NIAT-2024-CS-0419',
-  email: 'aarav.sharma@niat.edu.in',
-  avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80',
+  email: 'pushpendra.kumar@niat.edu.in',
+  avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
   baseMiles: 2350,
   currentRank: 42,
   badgeMiles: 500,
@@ -156,7 +156,7 @@ export const COHORT_STUDENTS = [
   {
     id: 's-1',
     rollNo: 'NIAT-24-0419',
-    name: 'Aarav Sharma',
+    name: 'Pushpendra Kumar',
     track: 'AI Systems Mastery',
     contestsCleared: '4/4',
     status: 'BOOKED',

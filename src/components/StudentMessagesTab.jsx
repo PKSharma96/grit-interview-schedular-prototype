@@ -31,9 +31,9 @@ export default function StudentMessagesTab() {
       },
       email: {
         subject: 'Confirmed: Your GRIT Track Badge Interview for AI Systems Mastery (Thu, Oct 24, 4:00 PM IST)',
-        sender: 'GRIT Interview Operations <operations@grit.niatindia.com>',
-        recipient: 'Aarav Sharma <aarav.sharma@niat.edu.in>',
-        body: `Hi Aarav,
+        sender: 'Mahima Sharma • HR & Interview Operations <operations@grit.niatindia.com>',
+        recipient: 'Pushpendra Kumar <pushpendra.kumar@niat.edu.in>',
+        body: `Hi Pushpendra,
 
 Congratulations on clearing all prerequisite skill contests for the AI Systems Mastery Track! Your 1:1 live defense interview has been officially scheduled.
 
@@ -64,7 +64,7 @@ MANDATORY PREPARATION CHECKLIST
 👉 Open Student Dashboard & Join Room: https://grit.niatindia.com/dashboard/interview
 
 Best of luck,
-The GRIT Interview & Academic Operations Team
+Mahima Sharma & The GRIT Interview Operations Team
 NIAT (NxtWave Institute of Advanced Technologies)`
       }
     },
@@ -80,9 +80,9 @@ NIAT (NxtWave Institute of Advanced Technologies)`
       },
       email: {
         subject: '🎉 Result: You Cleared the AI Systems Mastery Track Badge Interview!',
-        sender: 'GRIT Evaluation Committee <evaluations@grit.niatindia.com>',
-        recipient: 'Aarav Sharma <aarav.sharma@niat.edu.in>',
-        body: `Hi Aarav,
+        sender: 'Mahima Sharma • GRIT Evaluation Committee <evaluations@grit.niatindia.com>',
+        recipient: 'Pushpendra Kumar <pushpendra.kumar@niat.edu.in>',
+        body: `Hi Pushpendra,
 
 Outstanding performance! Following your live technical defense on October 24, your interviewer Sarah Chen has approved your Track Badge with Distinction.
 
@@ -106,7 +106,7 @@ Your digital badge is now displayed on your NIAT Profile and is verified for upc
 👉 View Badge on Leaderboard & Share on LinkedIn: https://grit.niatindia.com/badges/ai-systems-mastery
 
 Proud of your dedication,
-The GRIT Evaluation Committee, NIAT`
+Mahima Sharma & The GRIT Evaluation Committee, NIAT`
       }
     },
     {
@@ -122,8 +122,8 @@ The GRIT Evaluation Committee, NIAT`
       email: {
         subject: 'URGENT & CONFIDENTIAL: Official Notice of Badge Nullification & Miles Retraction (Track: AI Systems Mastery)',
         sender: 'NIAT Academic Integrity Review Board <integrity-board@niatindia.com>',
-        recipient: 'Aarav Sharma <aarav.sharma@niat.edu.in>',
-        body: `Dear Aarav Sharma,
+        recipient: 'Pushpendra Kumar <pushpendra.kumar@niat.edu.in>',
+        body: `Dear Pushpendra Kumar,
 Student Roll No: NIAT-2024-CS-0419
 
 This is an official communication from the NIAT Academic Integrity Board regarding your participation in the GRIT Skilling Competition.

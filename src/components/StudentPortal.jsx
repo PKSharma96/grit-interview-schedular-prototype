@@ -314,7 +314,7 @@ export default function StudentPortal({
                     Official Interview Result: PASSED
                   </span>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-2">
-                    Congratulations, Aarav! You Earned Your Track Badge!
+                    Congratulations, Pushpendra! You Earned Your Track Badge!
                   </h2>
                   <p className="text-slate-300 text-sm mt-1">
                     Your technical defense was evaluated and approved by <strong className="text-white">Sarah Chen</strong>. <span className="text-amber-400 font-bold">+500 GRIT Miles</span> have been added to your profile, moving you up to <strong className="text-white">#28 Nationally</strong>!

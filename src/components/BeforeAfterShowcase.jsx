@@ -40,10 +40,10 @@ export default function BeforeAfterShowcase({ studentState, setStudentState }) {
           <div className="flex items-center gap-1.5 bg-slate-950 p-1.5 rounded-xl border border-slate-800 text-xs">
             <button
               onClick={() => setComparisonMode('PASS')}
-              className={`px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1.5 ${
+              className={`px-3.5 py-1.5 rounded-lg font-semibold transition flex items-center gap-1.5 cursor-pointer ${
                 comparisonMode === 'PASS' 
-                  ? 'bg-emerald-600 text-white shadow-sm' 
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-emerald-600 text-white shadow-sm border border-emerald-400/40' 
+                  : 'text-slate-400 hover:text-white border border-transparent'
               }`}
             >
               <CheckCircle2 className="w-3.5 h-3.5" />
@@ -52,10 +52,10 @@ export default function BeforeAfterShowcase({ studentState, setStudentState }) {
 
             <button
               onClick={() => setComparisonMode('RETAKE')}
-              className={`px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1.5 ${
+              className={`px-3.5 py-1.5 rounded-lg font-semibold transition flex items-center gap-1.5 cursor-pointer ${
                 comparisonMode === 'RETAKE' 
-                  ? 'bg-orange-600 text-white shadow-sm' 
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-orange-600 text-white shadow-sm border border-orange-400/40' 
+                  : 'text-slate-400 hover:text-white border border-transparent'
               }`}
             >
               <RotateCcw className="w-3.5 h-3.5" />
@@ -64,10 +64,10 @@ export default function BeforeAfterShowcase({ studentState, setStudentState }) {
 
             <button
               onClick={() => setComparisonMode('NULLIFIED')}
-              className={`px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1.5 ${
+              className={`px-3.5 py-1.5 rounded-lg font-semibold transition flex items-center gap-1.5 cursor-pointer ${
                 comparisonMode === 'NULLIFIED' 
-                  ? 'bg-rose-600 text-white shadow-sm' 
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-rose-600 text-white shadow-sm border border-rose-400/40' 
+                  : 'text-slate-400 hover:text-white border border-transparent'
               }`}
             >
               <AlertTriangle className="w-3.5 h-3.5" />
@@ -97,7 +97,7 @@ export default function BeforeAfterShowcase({ studentState, setStudentState }) {
             <div className="flex items-center justify-between">
               <div>
                 <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-wider block">Student Dashboard</span>
-                <h4 className="text-base font-bold text-white">Aarav Sharma (NIAT-2024-CS-0419)</h4>
+                <h4 className="text-base font-bold text-white">Pushpendra Kumar (NIAT-2024-CS-0419)</h4>
               </div>
               <div className="text-right">
                 <span className="text-[10px] text-slate-400 block">Miles & Rank</span>
@@ -185,7 +185,7 @@ export default function BeforeAfterShowcase({ studentState, setStudentState }) {
               <div className="flex items-center justify-between">
                 <div>
                   <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider block">Student Dashboard</span>
-                  <h4 className="text-base font-bold text-white">Aarav Sharma (NIAT-2024-CS-0419)</h4>
+                  <h4 className="text-base font-bold text-white">Pushpendra Kumar (NIAT-2024-CS-0419)</h4>
                 </div>
                 <div className="text-right">
                   <span className="text-[10px] text-slate-400 block">Miles & Rank</span>
@@ -239,7 +239,7 @@ export default function BeforeAfterShowcase({ studentState, setStudentState }) {
               <div className="flex items-center justify-between">
                 <div>
                   <span className="text-[10px] font-bold text-orange-400 uppercase tracking-wider block">Student Dashboard</span>
-                  <h4 className="text-base font-bold text-white">Aarav Sharma (NIAT-2024-CS-0419)</h4>
+                  <h4 className="text-base font-bold text-white">Pushpendra Kumar (NIAT-2024-CS-0419)</h4>
                 </div>
                 <div className="text-right">
                   <span className="text-[10px] text-slate-400 block">Miles & Rank</span>
@@ -267,7 +267,7 @@ export default function BeforeAfterShowcase({ studentState, setStudentState }) {
               <div className="flex items-center justify-between">
                 <div>
                   <span className="text-[10px] font-bold text-rose-400 uppercase tracking-wider block">Academic Review Board</span>
-                  <h4 className="text-base font-bold text-white">Aarav Sharma (NIAT-2024-CS-0419)</h4>
+                  <h4 className="text-base font-bold text-white">Pushpendra Kumar (NIAT-2024-CS-0419)</h4>
                 </div>
                 <div className="text-right">
                   <span className="text-[10px] text-slate-400 block">Miles & Rank</span>

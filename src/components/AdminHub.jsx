@@ -41,7 +41,7 @@ export default function AdminHub({
 
   // Filter students
   const filteredStudents = cohortStudents.filter(student => {
-    // Sync with Aarav's dynamic state
+    // Sync with Pushpendra's dynamic state
     const currentStatus = student.rollNo === 'NIAT-24-0419' ? (
       studentState.journeyState === 'ELIGIBLE_UNBOOKED' ? 'NOT_BOOKED' :
       studentState.journeyState === 'BOOKED' ? 'BOOKED' :
@@ -211,8 +211,8 @@ export default function AdminHub({
             </thead>
             <tbody className="divide-y divide-slate-800/60">
               {filteredStudents.map((student) => {
-                const isAarav = student.rollNo === 'NIAT-24-0419';
-                const effectiveStatus = isAarav ? (
+                const isPushpendra = student.rollNo === 'NIAT-24-0419';
+                const effectiveStatus = isPushpendra ? (
                   studentState.journeyState === 'ELIGIBLE_UNBOOKED' ? 'NOT_BOOKED' :
                   studentState.journeyState === 'BOOKED' ? 'BOOKED' :
                   studentState.journeyState === 'PASSED' ? 'PASSED' :
@@ -230,7 +230,7 @@ export default function AdminHub({
                         <div>
                           <p className="font-bold text-white flex items-center gap-1.5">
                             <span>{student.name}</span>
-                            {isAarav && (
+                            {isPushpendra && (
                               <span className="text-[9px] bg-indigo-500/20 text-indigo-300 px-1.5 py-0.2 rounded font-mono">
                                 YOU
                               </span>
@@ -286,8 +286,8 @@ export default function AdminHub({
                     <td className="py-3.5 text-slate-300">
                       {effectiveStatus === 'BOOKED' ? (
                         <div>
-                          <p className="font-semibold text-white">{isAarav ? studentState.currentBooking?.interviewerName : student.interviewer}</p>
-                          <p className="text-[10px] text-indigo-400 font-mono">{isAarav ? studentState.currentBooking?.time : student.scheduledFor}</p>
+                          <p className="font-semibold text-white">{isPushpendra ? studentState.currentBooking?.interviewerName : student.interviewer}</p>
+                          <p className="text-[10px] text-indigo-400 font-mono">{isPushpendra ? studentState.currentBooking?.time : student.scheduledFor}</p>
                         </div>
                       ) : (
                         <span className="text-slate-500 italic">None scheduled</span>

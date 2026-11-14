@@ -132,44 +132,50 @@ export default function CandidatePortal({
       </div>
 
       {/* Candidate Sub-Navigation */}
-      <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-        <div className="flex items-center gap-2">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+        <nav className="flex items-center bg-slate-900 border border-slate-800 p-1.5 rounded-xl gap-1">
           <button
             onClick={() => setCandidateSubTab('interview')}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition ${
+            className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-lg text-xs font-semibold transition cursor-pointer ${
               candidateSubTab === 'interview'
-                ? 'bg-indigo-600 text-white shadow-sm'
-                : 'text-slate-400 hover:text-white hover:bg-slate-900'
+                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30 border border-indigo-400/40'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-transparent'
             }`}
           >
-            Track Interview Dashboard
+            <Calendar className="w-3.5 h-3.5" />
+            <span>Track Interview Dashboard</span>
           </button>
 
           <button
             onClick={() => setCandidateSubTab('before-after')}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition flex items-center gap-1.5 ${
+            className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-lg text-xs font-semibold transition cursor-pointer ${
               candidateSubTab === 'before-after'
-                ? 'bg-indigo-600 text-white shadow-sm'
-                : 'text-slate-400 hover:text-white hover:bg-slate-900'
+                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30 border border-indigo-400/40'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-transparent'
             }`}
           >
+            <Sparkles className="w-3.5 h-3.5" />
             <span>Before vs. After Result</span>
-            <span className="bg-indigo-500/20 text-indigo-300 text-[10px] px-1.5 py-0.2 rounded font-mono">Feature</span>
           </button>
 
           <button
             onClick={() => setCandidateSubTab('prereqs')}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition ${
+            className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-lg text-xs font-semibold transition cursor-pointer ${
               candidateSubTab === 'prereqs'
-                ? 'bg-indigo-600 text-white shadow-sm'
-                : 'text-slate-400 hover:text-white hover:bg-slate-900'
+                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30 border border-indigo-400/40'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-transparent'
             }`}
           >
-            Skill Contest Prerequisites (4/4 Cleared)
+            <Code2 className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">Skill Contest Prerequisites</span>
+            <span className="sm:hidden">Prerequisites</span>
+            <span className="text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded-full border border-emerald-500/30">
+              4/4
+            </span>
           </button>
-        </div>
+        </nav>
 
-        <div className="hidden sm:flex items-center gap-1.5 text-xs text-slate-400">
+        <div className="flex items-center gap-1.5 text-xs text-slate-400 font-mono">
           <Clock className="w-3.5 h-3.5 text-indigo-400" />
           <span>Cohort 2026 Season</span>
         </div>
@@ -516,28 +522,34 @@ export default function CandidatePortal({
                 </p>
               </div>
 
-              {/* Outcome filter */}
-              <div className="flex items-center gap-1.5 bg-slate-950 p-1 rounded-xl border border-slate-800 text-xs">
+              {/* Outcome filter with consistent segmented styling */}
+              <div className="flex items-center bg-slate-950 p-1.5 rounded-xl border border-slate-800 gap-1 text-xs">
                 <button
                   onClick={() => setComparisonOutcome('PASS')}
-                  className={`px-3 py-1 rounded-lg font-bold transition ${
-                    comparisonOutcome === 'PASS' ? 'bg-emerald-600 text-white shadow-sm' : 'text-slate-400 hover:text-white'
+                  className={`px-3.5 py-1.5 rounded-lg font-semibold transition cursor-pointer ${
+                    comparisonOutcome === 'PASS' 
+                      ? 'bg-emerald-600 text-white shadow-sm border border-emerald-400/40' 
+                      : 'text-slate-400 hover:text-white border border-transparent'
                   }`}
                 >
                   After: Pass 🎉
                 </button>
                 <button
                   onClick={() => setComparisonOutcome('RETAKE')}
-                  className={`px-3 py-1 rounded-lg font-bold transition ${
-                    comparisonOutcome === 'RETAKE' ? 'bg-orange-600 text-white shadow-sm' : 'text-slate-400 hover:text-white'
+                  className={`px-3.5 py-1.5 rounded-lg font-semibold transition cursor-pointer ${
+                    comparisonOutcome === 'RETAKE' 
+                      ? 'bg-orange-600 text-white shadow-sm border border-orange-400/40' 
+                      : 'text-slate-400 hover:text-white border border-transparent'
                   }`}
                 >
                   After: Retake
                 </button>
                 <button
                   onClick={() => setComparisonOutcome('NULLIFIED')}
-                  className={`px-3 py-1 rounded-lg font-bold transition ${
-                    comparisonOutcome === 'NULLIFIED' ? 'bg-rose-600 text-white shadow-sm' : 'text-slate-400 hover:text-white'
+                  className={`px-3.5 py-1.5 rounded-lg font-semibold transition cursor-pointer ${
+                    comparisonOutcome === 'NULLIFIED' 
+                      ? 'bg-rose-600 text-white shadow-sm border border-rose-400/40' 
+                      : 'text-slate-400 hover:text-white border border-transparent'
                   }`}
                 >
                   After: Nullified ⚠️
